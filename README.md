@@ -85,15 +85,15 @@ $ docker-compose up -d
         $ openssl genrsa -out server.key 4096
         ```
 3. 証明書署名要求を作成する.
-```bash
-$ openssl req -config openssl.cnf -new -key server.key -out server.csr -days 3650 -sha256
-```
+    ```bash
+    $ openssl req -config openssl.cnf -new -key server.key -out server.csr -days 3650 -sha256
+    ```
 
 4. サーバー証明書を発行する  
-```bash
-$ docker exec openssl-ca /usr/local/bin/sign.sh root /export/server.csr example.com 3650
-```
-`example.com`のサーバー証明書をroot認証局が発行する.期限は3650日
+    ```bash
+    $ docker exec openssl-ca /usr/local/bin/sign.sh root /export/server.csr example.com 3650
+    ```
+    `example.com`のサーバー証明書をroot認証局が発行する.期限は3650日
 
 ## TODO
 * [ ] CRTファイルのPEM形式への変換方法を追加
