@@ -1,0 +1,14 @@
+version: "3"
+services:
+  openssl_ca:
+    build: .
+    container_name: openssl-ca
+    environment:
+      - ROOT_CA_SUBJECT=/C=JP/ST=Tokyo/L=City/O=Company/CN=ca.example.com
+      - ROOT_CA_SAN=DNS:example.com,DNS:*.example.com
+      - SUB_CA_SUBJECT=/C=JP/ST=Tokyo/L=City/O=Company/CN=sub.example.com
+      - SUB_CA_SAN=DNS:example.com,DNS:*.example.com
+      - CA_VALID_DAYS=3650
+    volumes:
+      - "./export:/export"
+    tty: true
